@@ -11,6 +11,10 @@ public class InstitutionService {
 	
 	private InstitutionRepository institutionRepo;
 	
+	public InstitutionService(InstitutionRepository institutionRepo) {
+		this.institutionRepo = institutionRepo;
+	}
+	
 	public List<Institution> getInstitutions(){
 		return institutionRepo.findAll();
 	}
