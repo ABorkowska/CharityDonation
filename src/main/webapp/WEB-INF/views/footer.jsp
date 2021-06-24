@@ -26,7 +26,7 @@
     </div>
 </footer>
 
-<script src="<c:url value="static/js/app.js"/>"></script>
+<script src="<c:url value="/static/js/app.js"/>"></script>
 </body>
 </html>
 

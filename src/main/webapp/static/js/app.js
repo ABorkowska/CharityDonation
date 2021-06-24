@@ -164,6 +164,15 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+
+      const selectedCategories = document.querySelectorAll("input[name='categories']:checked");
+      console.log(selectedCategories)
+      const bag = document.querySelector("#bag");
+      console.log(bag)
+      bag.innerText = Array.from(selectedCategories).map(el => el.value).join(", ")
+
+
+
     }
 
   }
