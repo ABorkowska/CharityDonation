@@ -1,12 +1,16 @@
 package pl.coderslab.charity.model;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "categories")
 @Entity
 public class Category {
@@ -16,7 +20,8 @@ public class Category {
 	private Long id;
 	private String name;
 	
-	@ManyToMany(mappedBy="categories")
+	@JsonIgnore
+	@ManyToMany(mappedBy="categories", cascade=CascadeType.ALL)
 	private List<Donation> donations = new ArrayList<>();
 	
 	

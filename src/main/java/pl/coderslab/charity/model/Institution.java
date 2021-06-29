@@ -1,11 +1,14 @@
 package pl.coderslab.charity.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "institutions")
 @Entity
 public class Institution {

@@ -38,26 +38,17 @@
 
     <div class="slogan container container--90">
         <div class="slogan--item">
-            <h1>
-                Oddaj rzeczy, których już nie chcesz<br/>
+            <h1>Oddaj rzeczy, których już nie chcesz<br/>
                 <span class="uppercase">potrzebującym</span>
             </h1>
 
             <div class="slogan--steps">
                 <div class="slogan--steps-title">Wystarczą 4 proste kroki:</div>
                 <ul class="slogan--steps-boxes">
-                    <li>
-                        <div><em>1</em><span>Wybierz rzeczy</span></div>
-                    </li>
-                    <li>
-                        <div><em>2</em><span>Spakuj je w worki</span></div>
-                    </li>
-                    <li>
-                        <div><em>3</em><span>Wybierz fundację</span></div>
-                    </li>
-                    <li>
-                        <div><em>4</em><span>Zamów kuriera</span></div>
-                    </li>
+                    <li><div><em>1</em><span>Wybierz rzeczy</span></div></li>
+                    <li><div><em>2</em><span>Spakuj je w worki</span></div></li>
+                    <li><div><em>3</em><span>Wybierz fundację</span></div></li>
+                    <li><div><em>4</em><span>Zamów kuriera</span></div></li>
                 </ul>
             </div>
         </div>
@@ -95,7 +86,7 @@
                 <c:forEach var="cat" items="${categories}">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="checkbox" name="categories" value="${cat.name}"/>
+                            <input type="checkbox" name="categories" value="${cat.name}" multiple="true"/>
                             <span class="checkbox"></span>
                             <span class="description">${cat.name}</span>
                         </label>
@@ -123,11 +114,11 @@
 
             <!-- STEP 4 -->
             <div data-step="3">
-                <h3>Wybierz organizacje, której chcesz pomóc:</h3>
+                <h3>Wybierz organizację, której chcesz pomóc:</h3>
                 <c:forEach var="inst" items="${institutions}">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="radio" name="organization" value="old"/>
+                        <input type="radio" name="organization" value="${inst.name}" required/>
                         <span class="checkbox radio"></span>
                         <span class="description">
                             <div class="title">Fundacja “${inst.name}”</div>
@@ -150,34 +141,30 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="address"/> </label>
+                            <label> Ulica <input type="text" name="street" required/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="city"/> </label>
+                            <label> Miasto <input type="text" name="city" required/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label>
-                                Kod pocztowy <input type="text" name="postcode"/>
-                            </label>
+                            <label> Kod pocztowy <input type="text" name="postcode" pattern="^[0-9]{2}-[0-9]{3}$" required/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label>
-                                Numer telefonu <input type="phone" name="phone"/>
-                            </label>
+                            <label> Numer telefonu <input type="phone" name="phone" required/> </label>
                         </div>
                     </div>
 
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="data"/> </label>
+                            <label> Data <input type="date" name="date" required/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="time"/> </label>
+                            <label> Godzina <input type="time" name="time" required/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -204,39 +191,18 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text" id="bag"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
-                                >
+                                <span class="summary--text" id="packages"></span>
                             </li>
-
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
-                                >
+                                <span class="summary--text" id="institution"></span>
                             </li>
                         </ul>
                     </div>
 
                     <div class="form-section form-section--columns">
-                        <div class="form-section--column">
-                            <h4>Adres odbioru:</h4>
-                            <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
-                            </ul>
-                        </div>
-
-                        <div class="form-section--column">
-                            <h4>Termin odbioru:</h4>
-                            <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
-                            </ul>
-                        </div>
+                        <div class="form-section--column" id="address"></div>
+                        <div class="form-section--column" id="time"></div>
                     </div>
                 </div>
 
@@ -248,8 +214,6 @@
         </form>
     </div>
 </section>
-
-<script src="<c:url value="/static/js/app.js"/>"></script>
 
 </body>
 <%@ include file="./footer.jsp" %>
