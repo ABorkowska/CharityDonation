@@ -141,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             // Form submit
-            console.log('kkkkk')
             this.$form.querySelector("form").addEventListener("submit", e => this.submit(e));
         }
 

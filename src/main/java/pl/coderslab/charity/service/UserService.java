@@ -27,11 +27,15 @@ public UserService(UserRepository userRepo, RoleRepository roleRepo,BCryptPasswo
 	public User findUserByEmail(String email) {
 		return userRepo.findByEmail(email);
 	}
-	public User addUser(User user) {
-		user.setPassword(passEncoder.encode(user.getPassword()));
+	public void addUser(String name, String surname, String email, String password) {
+		User user = new User();
+		user.setName(name);
+		user.setSurname(surname);
+		user.setEmail(email);
+		user.setPassword(passEncoder.encode(password));
 		user.setEnabled(1);
 		Role role = roleRepo.findByName("ROLE_USER");
 		user.setRoles(new HashSet<Role>(Arrays.asList(role)));
-		return userRepo.save(user);
+		userRepo.save(user);
 	}
 }

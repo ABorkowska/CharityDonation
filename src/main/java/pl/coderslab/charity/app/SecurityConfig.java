@@ -1,8 +1,10 @@
 package pl.coderslab.charity.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.event.EventListener;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,10 +26,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().ignoringAntMatchers("/api/**").and().authorizeRequests()
-				.antMatchers("/home", "/api/**").permitAll()
+				.antMatchers("/home", "/api/**", "/donation/register").permitAll()
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.and().formLogin()
-				.loginPage("/login")
+				.loginPage("/donation/login")
 				.defaultSuccessUrl("/home")
 				.usernameParameter("email")
 				.passwordParameter("password")

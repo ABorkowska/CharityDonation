@@ -33,10 +33,16 @@ public class DonationController {
 	
 	@GetMapping ("/donation/add")
 	public String showDonationForm(Model model, Principal principal){
+		if (principal==null) {
+			return "redirect:/donation/login";
+		}
+		User user = userService.findUserByEmail(principal.getName());
 		List<Category> categories = catService.getCategories();
 		List<Institution> institutions = instService.getInstitutions();
 		model.addAttribute("categories", categories);
 		model.addAttribute("institutions", institutions);
+		model.addAttribute("user", user);
+		
 		return "donation-form";
 	}
 	
