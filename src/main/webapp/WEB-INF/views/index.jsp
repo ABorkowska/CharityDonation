@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <a href="<c:url value="donation/register"/>" class="btn btn--large">Załóż konto</a>
+    <a href="<c:url value="/donation/register"/>" class="btn btn--large">Załóż konto</a>
 </section>
 
 <section class="about-us">

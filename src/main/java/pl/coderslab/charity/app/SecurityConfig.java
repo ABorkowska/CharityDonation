@@ -32,8 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/donation/login")
 				.defaultSuccessUrl("/home")
 				.usernameParameter("email")
-				.passwordParameter("password")
-				.failureUrl("/login?error=true");
+				.passwordParameter("password");
+				//.failureUrl("/donation/login?error=true");
 	}
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		auth

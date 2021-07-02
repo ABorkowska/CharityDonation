@@ -36,7 +36,7 @@
             <input type="password" name="password2" placeholder="Powtórz hasło" />
         </div>
         <div class="form-group form-group--buttons">
-            <a href="<c:url value="donation/login"/>" class="btn btn--without-border">Zaloguj się</a>
+            <a href="<c:url value="/donation/login"/>" class="btn btn--without-border">Zaloguj się</a>
             <button class="btn" type="submit">Załóż konto</button>
         </div>
         <div class="form-group">

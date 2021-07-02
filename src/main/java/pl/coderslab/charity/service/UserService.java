@@ -34,7 +34,7 @@ public UserService(UserRepository userRepo, RoleRepository roleRepo,BCryptPasswo
 		user.setEmail(email);
 		user.setPassword(passEncoder.encode(password));
 		user.setEnabled(1);
-		Role role = roleRepo.findByName("ROLE_USER");
+		Role role = roleRepo.findByName("USER");
 		user.setRoles(new HashSet<Role>(Arrays.asList(role)));
 		userRepo.save(user);
 	}

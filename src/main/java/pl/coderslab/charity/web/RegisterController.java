@@ -33,7 +33,6 @@ public class RegisterController {
 			@RequestParam String password,
 			@RequestParam String password2) {
 		
-		
 		if (!password.equals(password2)) {
 			return "redirect:/donation/register?error=true";
 		}
@@ -42,10 +41,10 @@ public class RegisterController {
 	}
 	
 	@GetMapping("/donation/login")
-	public String showLoginForm(Model model, @RequestParam(required = false) String error) {
+	public String showLoginForm(Model model, @RequestParam(required = false) String error2) {
 		User user = new User();
-		if (error != null) {
-			model.addAttribute("error", "Nieprawidłowy login i/lub hasło");
+		if (error2 != null) {
+			model.addAttribute("error2", "Nieprawidłowy login i/lub hasło");
 		}
 		model.addAttribute("user", user);
 		return "login";

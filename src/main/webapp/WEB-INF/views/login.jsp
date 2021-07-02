@@ -15,23 +15,25 @@
 <%@ include file="header-login.jsp" %>
 <section class="login-page">
     <h2>Zaloguj się</h2>
-    <form action="${pageContext.request.contextPath}/donation/login" method="post" modelattribute="user">
-        <div class="form-group">
-            <input type="email" name="email" placeholder="Email" />
-        </div>
-        <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło" />
-            <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
-        </div>
-
-        <div class="form-group form-group--buttons">
-            <a href="<c:url value="/donation/register"/>" class="btn btn--without-border">Załóż konto</a>
-            <button class="btn" type="submit">Zaloguj się</button>
-        </div>
-        <div class="form-group">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </div>
-    </form>
+    <c:if test="${error2 != null}">
+    <div cssClass="error"> ${error2}
+        </c:if>
+        <form action="${pageContext.request.contextPath}/donation/login" method="post" modelattribute="user">
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email"/>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Hasło"/>
+                <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
+            </div>
+            <div class="form-group form-group--buttons">
+                <a href="<c:url value="/donation/register"/>" class="btn btn--without-border">Załóż konto</a>
+                <button class="btn" type="submit">Zaloguj się</button>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </div>
+        </form>
 </section>
 
 <footer>
@@ -40,10 +42,10 @@
         <h3>Formularz kontaktowy</h3>
         <form>
             <div class="form-group form-group--50">
-                <input type="text" name="name" placeholder="Imię" />
+                <input type="text" name="name" placeholder="Imię"/>
             </div>
             <div class="form-group form-group--50">
-                <input type="text" name="surname" placeholder="Nazwisko" />
+                <input type="text" name="surname" placeholder="Nazwisko"/>
             </div>
 
             <div class="form-group">
@@ -60,6 +62,6 @@
             <a href="#" class="btn btn--small"><img src="images/icon-instagram.svg"/></a>
         </div>
     </div>
-<%@ include file="./footer.jsp" %>
+    <%@ include file="./footer.jsp" %>
 </body>
 </html>
